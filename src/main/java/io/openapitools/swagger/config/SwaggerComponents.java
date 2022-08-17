@@ -21,7 +21,7 @@ public class SwaggerComponents {
         Components components = new Components();
 
         if (securitySchemes != null && !securitySchemes.isEmpty()) {
-            securitySchemes.entrySet().forEach(s -> components.addSecuritySchemes(s.getKey(), s.getValue().createSecuritySchemaModel()));
+            securitySchemes.forEach((key, value) -> components.addSecuritySchemes(key, value.createSecuritySchemaModel()));
         }
 
         return components;

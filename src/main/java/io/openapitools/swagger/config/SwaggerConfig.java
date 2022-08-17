@@ -93,7 +93,7 @@ public class SwaggerConfig {
             }
             try {
                 spec.getInfo().setDescription(
-                        Files.readAllLines(descriptionFile.toPath()).stream().collect(Collectors.joining("\n")));
+                        String.join("\n", Files.readAllLines(descriptionFile.toPath())));
             } catch (IOException e) {
                 throw new RuntimeException("Unable to read descriptor file " + descriptionFile, e);
             }

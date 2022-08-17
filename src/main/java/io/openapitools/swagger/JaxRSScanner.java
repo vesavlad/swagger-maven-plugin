@@ -12,6 +12,7 @@ import javax.ws.rs.core.Application;
 import org.apache.maven.plugin.logging.Log;
 import org.reflections.Reflections;
 import org.reflections.scanners.ResourcesScanner;
+import org.reflections.scanners.Scanners;
 import org.reflections.scanners.SubTypesScanner;
 import org.reflections.scanners.TypeAnnotationsScanner;
 import org.reflections.util.ConfigurationBuilder;
@@ -39,7 +40,7 @@ class JaxRSScanner {
     Application applicationInstance() {
         ConfigurationBuilder config = ConfigurationBuilder
                 .build(resourcePackages)
-                .setScanners(new ResourcesScanner(), new TypeAnnotationsScanner(), new SubTypesScanner());
+                .setScanners(Scanners.Resources, Scanners.TypesAnnotated, Scanners.SubTypes);
         Reflections reflections = new Reflections(config);
         Set<Class<? extends Application>> applicationClasses = reflections.getSubTypesOf(Application.class)
                 .stream()
@@ -58,7 +59,7 @@ class JaxRSScanner {
     Set<Class<?>> classes() {
         ConfigurationBuilder config = ConfigurationBuilder
                 .build(resourcePackages)
-                .setScanners(new ResourcesScanner(), new TypeAnnotationsScanner(), new SubTypesScanner());
+                .setScanners(Scanners.Resources, Scanners.TypesAnnotated, Scanners.SubTypes);
         Reflections reflections = new Reflections(config);
         Stream<Class<?>> apiClasses = reflections.getTypesAnnotatedWith(Path.class)
                 .stream()
