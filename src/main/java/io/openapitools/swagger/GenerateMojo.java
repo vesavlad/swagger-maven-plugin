@@ -7,14 +7,12 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 import io.openapitools.swagger.config.SwaggerConfig;
 import io.swagger.v3.jaxrs2.Reader;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.Operation;
 import org.apache.maven.artifact.DependencyResolutionRequiredException;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -126,6 +124,18 @@ public class GenerateMojo extends AbstractMojo {
 
             OpenAPI swagger = OpenAPISorter.sort(reader.read(reflectiveScanner.classes()));
 
+            swagger.getPaths().forEach((s, pathItem) -> {
+                List<Operation> operations = pathItem.readOperations();
+                operations.forEach(operation -> {
+                    if(operation.getOperationId() == null) {
+                        return;
+                    }
+                    String opId = operation.getOperationId().replaceAll("([a-zA-Z]*)(_[0-9]*)", "$1");
+                    if(!opId.isEmpty() && !opId.equals(operation.getOperationId())) {
+                        operation.setOperationId(opId);
+                    }
+                });
+            });
             if (outputDirectory.mkdirs()) {
                 getLog().debug("Created output directory " + outputDirectory);
             }

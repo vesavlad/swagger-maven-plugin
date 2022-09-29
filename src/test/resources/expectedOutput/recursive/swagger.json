@@ -84,7 +84,7 @@
     },
     "/api/alternate" : {
       "get" : {
-        "operationId" : "list_1",
+        "operationId" : "list",
         "responses" : {
           "default" : {
             "description" : "default response",
