@@ -23,12 +23,12 @@ public class OpenApiSorterTest {
     @Test
     public void testSort() {
         ObjectSchema schema1 = new ObjectSchema();
-        schema1.addProperties("s1-2", new StringSchema());
-        schema1.addProperties("s1-1", new StringSchema());
+        schema1.addProperty("s1-2", new StringSchema());
+        schema1.addProperty("s1-1", new StringSchema());
 
         ObjectSchema schema2 = new ObjectSchema();
-        schema2.addProperties("s2-2", new StringSchema());
-        schema2.addProperties("s2-1", new StringSchema());
+        schema2.addProperty("s2-2", new StringSchema());
+        schema2.addProperty("s2-1", new StringSchema());
 
         Components components = new Components()
                 .addSchemas("s2", schema2)
