@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <name>Swagger Maven Plugin</name>
-    <groupId>io.openapitools.swagger</groupId>
+    <groupId>vesavlad</groupId>
     <version>2.1.7-SNAPSHOT</version>
     <artifactId>swagger-maven-plugin</artifactId>
     <packaging>maven-plugin</packaging>
 
     <description>Maven plugin to generate OpenAPI documentation using Swagger.</description>
-    <url>https://github.com/openapi-tools/swagger-maven-plugin</url>
+    <url>https://github.com/vesavlad/swagger-maven-plugin</url>
 
     <licenses>
         <license>
@@ -26,12 +26,16 @@
             <organization>Open API Tools</organization>
             <organizationUrl>https://github.com/openapitools</organizationUrl>
         </developer>
+        <developer>
+            <name>Vesa Vlad</name>
+            <email>vlad.vesa@outlook.com</email>
+        </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:https://github.com/openapi-tools/swagger-maven-plugin.git</connection>
-        <developerConnection>scm:git:https://github.com/openapi-tools/swagger-maven-plugin.git</developerConnection>
-        <url>https://github.com/openapi-tools/swagger-maven-plugin/tree/master</url>
+        <connection>scm:git:https://github.com/vesavlad/swagger-maven-plugin.git</connection>
+        <developerConnection>scm:git:https://github.com/vesavlad/swagger-maven-plugin.git</developerConnection>
+        <url>https://github.com/vesavlad/swagger-maven-plugin/tree/master</url>
         <tag>HEAD</tag>
     </scm>
 
@@ -284,22 +288,22 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
-                <configuration>
-                    <source>1.8</source>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadocs</id>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-javadoc-plugin</artifactId>-->
+<!--                <version>3.1.1</version>-->
+<!--                <configuration>-->
+<!--                    <source>1.8</source>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>attach-javadocs</id>-->
+<!--                        <goals>-->
+<!--                            <goal>jar</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
